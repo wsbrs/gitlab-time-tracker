@@ -25,8 +25,8 @@ class markdown extends Base {
         _.each(this.stats, (time, name) => stats += `\n* **${name}**: ${time}`);
         stats += `\n`;
 
-        if (this.projects.length > 1) {
-            _.each(this.projects, (time, name) => stats += `\n* **${name.red}**: ${time}`);
+        if (Object.keys(this.projects).length > 1) {
+            _.each(this.projects, (time, name) => stats += `\n* **${name}**: ${time}`);
             stats += `\n`;
         }
 
