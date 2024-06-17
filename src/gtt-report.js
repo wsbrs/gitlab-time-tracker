@@ -75,6 +75,10 @@ if (program.from_dump && fs.existsSync(program.from_dump)) {
     let data = JSON.parse(fs.readFileSync(program.from_dump));
 
     if (data.data) _.each(data.data, (v, i) => {
+        // Unsetting option "file", as it does not allow to select different output file
+        if (i === 'file') {
+            return;
+        }
         config.set(i, v);
     });
 
