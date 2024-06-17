@@ -19,7 +19,7 @@ class xlsx extends Base {
             stats[1].push(time);
         });
 
-        if (this.projects.length > 1) {
+        if (Object.keys(this.projects).length > 1) {
             _.each(this.projects, (time, name) => {
                 stats[0].push(name);
                 stats[1].push(time);
