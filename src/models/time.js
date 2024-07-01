@@ -28,7 +28,7 @@ class time {
      * construct
      * @param timeString
      * @param note
-     * @param parent
+     * @param {hasTimes} parent
      * @param config
      */
     constructor(timeString, date = null, note, parent, config) {
@@ -73,6 +73,15 @@ class time {
 
     get time() {
         return time.toHumanReadable(this.seconds, this._hoursPerDay, this._timeFormat);
+    }
+
+    /**
+     * Title of the linked Noteable object (Issue/MergeRequest)
+     *
+     * @returns {String|null}
+     */
+    get title() {
+        return this.parent && this.parent.title || null;
     }
 
     get _timeFormat() {
