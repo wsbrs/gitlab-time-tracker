@@ -1,0 +1,22 @@
+name: Tests
+on: [ push, pull_request ]
+
+env:
+  COVERALLS_SERVICE_NUMBER: ${{ github.run_id }}-${{ github.run_number }}-${{ github.run_attempt }}
+  COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: yarn
+      - run: yarn install
+      - run: yarn run coveralls
+      - name: Coveralls
+        id: coveralls
+        uses: coverallsapp/github-action@v2
+
